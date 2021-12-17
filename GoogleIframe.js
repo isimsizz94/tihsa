@@ -38,8 +38,6 @@ function suicide() {
     keyUpHandler = undefined;
 }
 
-window.addEventListener("load", () => {
-    document.body.prepend(createGoogleIframe());
-});
+document.body.prepend(createGoogleIframe());
 
 document.addEventListener("keyup", keyUpHandler);
