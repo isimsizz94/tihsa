@@ -23,7 +23,7 @@ function createGoogleIframe() {
 
 function keyUpHandler(event) {
     if (event.ctrlKey && event.key === "Shift") {
-        toggle(iframe);
+        show(iframe);
     }
     if (event.ctrlKey && event.key === "Alt") {
         suicide();
@@ -58,4 +58,4 @@ document.body.prepend(iframe);
 document.addEventListener("click", event => {
     hide(iframe);
 });
-window.addEventListener("keyup", keyUpHandler);
+window.addEventListener("keydown", keyUpHandler);
