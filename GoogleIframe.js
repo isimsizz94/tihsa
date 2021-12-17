@@ -2,7 +2,7 @@ function createGoogleIframe() {
     let iframe = document.createElement("iframe");
 
     Object.assign(iframe.style, {
-        position: "absolute",
+        position: "fixed",
         width: "50%",
         height: "100%",
         zIndex: "9999999",
@@ -30,6 +30,10 @@ function keyUpHandler(event) {
     }
 }
 
+function documentClickHandler(event){
+    hide(iframe);
+}
+
 function toggle(iframe) {
     iframe.hidden = !iframe.hidden;
 }
@@ -37,6 +41,7 @@ function toggle(iframe) {
 function hide(iframe){
     iframe.hidden = true;
 }
+
 function show(iframe){
     iframe.hidden = false;
 }
@@ -47,7 +52,11 @@ function suicide() {
     suicide = undefined;
     document.querySelector("#google-searcher").remove();
     window.removeEventListener("keyup", keyUpHandler);
+    document.removeEventListener("click", documentClickHandler);
     keyUpHandler = undefined;
+    hide = undefined;
+    show = undefined;
+    iframe = undefined;
 }
 
 
@@ -55,7 +64,5 @@ function suicide() {
 let iframe = createGoogleIframe();
 document.body.prepend(iframe);
 
-document.addEventListener("click", event => {
-    hide(iframe);
-});
+document.addEventListener("click", documentClickHandler);
 window.addEventListener("keydown", keyUpHandler);
