@@ -22,7 +22,7 @@ function createGoogleIframe() {
 }
 
 function keyUpHandler(event) {
-    if (event.key === "Control") {
+    if (event.shiftKey && event.key === "Control") {
         toggle(iframe);
     }
     if (event.ctrlKey && event.key === "Alt") {
